@@ -1,0 +1,44 @@
+
+<h1>Please select posts below to view details.</h1>
+<%if @msg %>
+  <p class='alert alert-danger'><%= @msg %></p>
+<% end %>
+<%= form_tag search_path do %>
+  <%= label_tag(:search, "Search for:") %>
+  <%= text_field_tag(:search) %>
+  <%= check_box_tag(:w,class:"form-check-input" ) %>
+  <%= label_tag(:w, "search by username",class:'form-check-label') %>
+  <%= check_box_tag(:t,class:"form-check-input" ) %>
+  <%= label_tag(:t, "search by title",class:'form-check-label') %>
+  <%= submit_tag("Search",class:'btn btn-primary') %>
+<% end %>
+
+<table class="table table-bordered">
+  <thead>
+    <tr>
+      <th scope="col">Title</th>
+      <th scope="col">Content</th>
+      <th scope="col">Date</th>
+      <th scope="col">Username</th>
+      <th scope="col">Option</th>
+    </tr>
+  </thead>
+  <tbody>
+    <% @datas.each do |data| %>
+    <tr>
+      <td><%= data.title %></td>
+      <td>
+        <% if data.body.length>50 %>
+          <p class="card-text"><%= data.body[0..50]+'......' %></p>
+        <% else %>
+          <p class="card-text"><%= data.body %></p></td>
+        <% end %>
+      </td>
+      <td><%= data.date.strftime("%m/%d/%Y") %></td>
+      <td><%= data.username %></td>
+      <td><a href=<%= yipenglu_path(data.id) %> class="btn btn-primary">read more</a></td>
+    </tr>
+    <% end %>
+
+  </tbody>
+</table>

@@ -1,0 +1,48 @@
+
+<h1><%= @data.title %></h1>
+<div class='content'>
+<p><%= @data.body %></p>
+<% if @data.date %>
+    <p><%= @data.date.strftime("Wrote on %m/%d/%Y") %></p>
+<% end %>
+<% if @data.username %>
+    <p>Wrote by: <%= @data.username %></p>
+<% end %>
+</div>
+<%=link_to 'edit', edit_yipenglu_path(@data.id),:class => 'btn btn-primary'%>
+<%=link_to 'delete', yipenglu_path(@data.id),method: :delete,data:{confirm:'are you sure'},:class => 'btn btn-danger'%>
+<div class='comments'>
+<h2>comment</h2>
+<% @data.coms.each do |com|%>
+    <div class='comment'>
+    <p class='comBody'><%= com.body %><p>
+    <p>Username: <%= com.user %></p>
+    <% if com.date %>
+        <p><%= com.date.strftime("Wrote on %m/%d/%Y") %></p>
+    <% end %>
+    <%=link_to 'delete comment', yipenglu_com_path({id:com.id,yipenglu_id:@data.id}),method: :delete,data:{confirm:'are you sure'},:class => 'btn btn-danger'%>
+    </div>
+<% end %>
+</div>
+
+<div class='addComment'>
+<h2>add new comment</h2>
+<%=form_for ([@data,@data.coms.build]),url:yipenglu_coms_path(@data.id),html:{class:'myForm'} do |f|%>
+    <p>
+        <%= f.label( :username,{:class => 'formTitle'}) %><br>
+        <%= f.text_area :user, class:'form-control',placeholder:'should not be empty' %>
+    </p>
+    
+    <p>
+        <%= f.label(:comment,{:class => 'formTitle'}) %><br>
+        <%= f.text_area :body, class:'form-control',placeholder:'should not be empty or more than 20 characters' %>
+    </p>
+
+    <p>
+        <%= f.label(:datetime,{:class => 'formTitle'}) %><br>
+        <%= f.date_field(:date,{:class => 'form-control'}) %>
+    </p>
+    <p>
+        <%= f.submit(:add_comment,{:class => 'btn btn-primary'}) %>
+<% end %>
+</div>

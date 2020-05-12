@@ -1,0 +1,31 @@
+<h1> Create post </h1>
+<%if @data %>
+<% if @data.errors.any? %>
+    <% @data.errors.full_messages.each do |msg| %>
+        <p class='errorMessage alert alert-danger'><%= msg %></p>
+    <% end %>
+<% end %>
+<% end %>
+<%=form_for :data,url:yipenglu_index_path,html:{class:'form-group'} do |f|%>
+    <p>
+        <%= f.label( :title,{:class => 'formTitle'}) %><br>
+        <%= f.text_field(:title,{:class => 'form-control'}) %>
+    </p>
+    
+    <p>
+        <%= f.label(:content,{:class => 'formTitle'}) %><br>
+        <%= f.text_area(:body,{:class => 'form-control'}) %>
+    </p>
+    
+    <p>
+        <%= f.label(:datetime,{:class => 'formTitle'}) %><br>
+        <%= f.date_field(:date,{:class => 'form-control'}) %>
+    </p>
+    
+    <p>
+        <%= f.label( :username,{:class => 'formTitle'}) %><br>
+        <%= f.text_field(:username,{:class => 'form-control'}) %>
+    </p>
+
+        <%= f.submit(:save_post,{:class => 'btn btn-primary'}) %>
+<% end %>

@@ -1,0 +1,81 @@
+/*
+ * This is a manifest file that'll be compiled into application.css, which will include all the files
+ * listed below.
+ *
+ * Any CSS and SCSS file within this directory, lib/assets/stylesheets, vendor/assets/stylesheets,
+ * or any plugin's vendor/assets/stylesheets directory can be referenced here using a relative path.
+ *
+ * You're free to add application-wide styles to this file and they'll appear at the bottom of the
+ * compiled file so the styles you add here take precedence over styles defined in any styles
+ * defined in the other CSS/SCSS files in this directory. It is generally better to create a new
+ * file per style scope.
+ *
+ *= require_tree .
+ *= require_self
+ */
+
+body{
+    background:#a9b9d1;
+}
+
+.card{
+    text-align: center;
+    background:#91ed9a;
+}
+h1{
+    color:#e4f2e5;
+    text-align:center;
+}
+
+.footer p{
+    color:white;
+    background:black;
+    text-align: right;
+    position:fixed;
+    bottom:0;
+    width:100%;
+    margin:0;
+}
+.myForm{
+    margin:0;
+}
+.content{
+    word-wrap:break-word;
+    color:white;
+}
+.comments{
+    margin:200px 0 0 0;
+}
+.comments h2{
+    text-align: center;
+    color:yellow;
+}
+.addComment h2{
+    text-align: center;
+    color:yellow;
+}
+.comment{
+    margin:30px;
+    background:#e7f081;
+    border:1px solid white;
+    padding:10px;
+    word-wrap:break-word;
+}
+
+.addComment{
+
+    margin:100px 0 0 0;
+    padding:10px;
+}
+.formTitle{
+    color:yellow;
+}
+table{
+    text-align: center;
+}
+h1{
+    margin:50px 0 50px 0;
+}
+table{
+    margin:50px 0 0 0;
+}
